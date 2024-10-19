@@ -34,6 +34,7 @@ window.addEventListener('scroll', () => {
 const getStartedBtn = document.getElementById('get-started-btn');
 const videoModal = document.getElementById('video-modal');
 const closeModalBtn = document.getElementById('close-modal');
+const backgroundAudio = document.getElementById('backgroundAudio');
 let player; // Variabel untuk menyimpan instance player YouTube
 
 // Load YouTube IFrame API
@@ -53,6 +54,7 @@ function onPlayerReady(event) {
 getStartedBtn.addEventListener('click', (event) => {
     event.preventDefault(); // Prevent default anchor behavior
     videoModal.classList.remove('hidden');
+    backgroundAudio.pause(); // Pause audio saat video dibuka
     player.playVideo(); // Memulai pemutaran video saat modal dibuka
 });
 
@@ -60,6 +62,7 @@ getStartedBtn.addEventListener('click', (event) => {
 closeModalBtn.addEventListener('click', () => {
     videoModal.classList.add('hidden');
     player.pauseVideo(); // Hentikan pemutaran video saat modal ditutup
+    backgroundAudio.play(); // Lanjutkan audio saat modal ditutup
 });
 
 // Close modal when clicking outside of the modal
@@ -67,6 +70,7 @@ videoModal.addEventListener('click', (event) => {
     if (event.target === videoModal) {
         videoModal.classList.add('hidden');
         player.pauseVideo(); // Hentikan pemutaran video saat modal ditutup
+        backgroundAudio.play(); // Lanjutkan audio saat modal ditutup
     }
 });
 
@@ -75,9 +79,9 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') { // Close modal with Esc key
         videoModal.classList.add('hidden');
         player.pauseVideo(); // Hentikan pemutaran video saat modal ditutup
+        backgroundAudio.play(); // Lanjutkan audio saat modal ditutup
     }
 });
-
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -140,54 +144,63 @@ let currentIndex = 0;
 
 // Create and append the correct number of dots based on card count
 for (let i = 0; i < cardCount; i++) {
-  const dot = document.createElement("span");
-  dot.classList.add(
-    "dot",
-    "block",
-    "w-2",
-    "h-2",
-    "rounded-full",
-    "cursor-pointer",
-    "transition-all",
-    "duration-300"
-  );
-  dot.setAttribute("data-index", i);
-  dot.classList.add(i === 0 ? "bg-gray-800" : "bg-gray-300");
-  dotsContainer.appendChild(dot);
+    const dot = document.createElement("span");
+    dot.classList.add(
+        "dot",
+        "block",
+        "w-2",
+        "h-2",
+        "rounded-full",
+        "cursor-pointer",
+        "transition-all",
+        "duration-300"
+    );
+    dot.setAttribute("data-index", i);
+    dot.classList.add(i === 0 ? "bg-gray-800" : "bg-gray-300");
+    dotsContainer.appendChild(dot);
 }
 
 const dots = document.querySelectorAll(".dot");
 
 function updateDots(activeIndex) {
-  dots.forEach((dot, index) => {
-    dot.classList.remove("bg-gray-800", "w-8");
-    dot.classList.add("bg-gray-300", "w-2");
-    if (index === activeIndex) {
-      dot.classList.add("bg-gray-800", "w-8");
-      dot.classList.remove("bg-gray-300");
-    }
-  });
+    dots.forEach((dot, index) => {
+        dot.classList.remove("bg-gray-800", "w-8");
+        dot.classList.add("bg-gray-300", "w-2");
+        if (index === activeIndex) {
+            dot.classList.add("bg-gray-800", "w-8");
+            dot.classList.remove("bg-gray-300");
+        }
+    });
 }
 
 function scrollToCard(index) {
-  carousel.scrollTo({
-    left: index * cardWidth,
-    behavior: "smooth",
-  });
-  currentIndex = index;
-  updateDots(index);
+    carousel.scrollTo({
+        left: index * cardWidth,
+        behavior: "smooth",
+    });
+    currentIndex = index;
+    updateDots(index);
 }
 
 dots.forEach((dot) => {
-  dot.addEventListener("click", (e) => {
-    const index = Number(e.target.getAttribute("data-index"));
-    scrollToCard(index);
-  });
+    dot.addEventListener("click", (e) => {
+        const index = Number(e.target.getAttribute("data-index"));
+        scrollToCard(index);
+    });
 });
 
 carousel.addEventListener("scroll", () => {
-  const index = Math.round(carousel.scrollLeft / cardWidth);
-  updateDots(index);
+    const index = Math.round(carousel.scrollLeft / cardWidth);
+    updateDots(index);
 });
 
 updateDots(0);
+
+
+
+window.onload = function () {
+    var audio = document.getElementById('backgroundAudio');
+    audio.play().catch(function (error) {
+        console.log('Autoplay was prevented:', error);
+    });
+};
