@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Banda Neira Website</title>
+    <title>Banda Neira - Timur Nusantara</title>
+    <link rel="icon" type="image/x-icon" href="asset/Logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -71,7 +72,7 @@
         <div class="max-w-8xl mx-auto px-8 md:px-9 xl:px-0">
             <div class=" flex justify-between items-center py-4 xl:mx-[80px] md:mx-[20px] sm:mx-[20px] ">
                 <div class="flex-shrink-0 ">
-                    <img src="asset/Logo.svg" alt="Logo" class="h-10">
+                    <img src="asset/Logo.svg" alt="Logo" class="h-10" href="#home">
                 </div>
                 <div class="md:hidden">
                     <button id="menu-btn" class="text-gray-800 focus:outline-none">
@@ -112,7 +113,7 @@
             </div>
 
             <!-- Mobile Navigation -->
-            <nav id="mobile-menu" class="hidden md:hidden py-4 bg-white ">
+            <nav id="mobile-menu" class="hidden md:hidden py-3 bg-white ">
                 <a href="#home" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Beranda</a>
                 <a href="#about" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Tentang</a>
                 <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Galeri</a>
@@ -191,7 +192,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="px-[30px] py-[50px] md:px-[50px] xl:px-[80px] lg:py[50px] min-h-screen">
+    <section id="about" class="px-[30px] py-[30px] md:px-[50px] xl:px-[80px] lg:py[50px] min-h-screen">
         <div class="flex gap-y-[20px] gap-x-[80px] flex-col xl:flex-row justify-between">
             <div class="flex gap-[20px] w-full items-center">
                 <div class="rounded-full border-2 text-[10px] w-fit font-semibold border-black p-1.5 px-4">
@@ -462,13 +463,16 @@
 
         <div id="carousel" class="flex space-x-4 overflow-x-auto scroll-smooth scrollbar-hide">
             <!-- Testimonial Card -->
-            <div class="w-full sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
-                <div class="text-gray-600 text-2xl mb-4">“</div>
-                <p class="text-gray-600 mb-[50px]">
-                    Donec id egestas libero. Praesent aliquet ligula eget suscipit
-                    volutpat.
-                </p>
-                <div class="flex items-center justify-between">
+            <div
+                class="w-full flex flex-col justify-between sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
+                <div>
+                    <div class="text-gray-600 text-2xl mb-4">“</div>
+                    <p class="text-gray-600">
+                        Donec id egestas libero. Praesent aliquet ligula eget suscipit
+                        volutpat.
+                    </p>
+                </div>
+                <div class="flex items-center justify-between mt-auto">
                     <span class="font-semibold">Kyara</span>
                     <div class="text-yellow-400 flex">
                         <span>★★★★★</span>
@@ -476,12 +480,15 @@
                 </div>
             </div>
             <!-- Additional Testimonial Cards -->
-            <div class="w-full sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
-                <div class="text-gray-600 text-2xl mb-4">“</div>
-                <p class="text-gray-600 mb-[50px]">
-                    Aliquam erat volutpat. Vivamus luctus purus id mauris pharetra, id
-                    luctus velit iaculis.
-                </p>
+            <div
+                class="w-full flex flex-col justify-between sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
+                <div>
+                    <div class="text-gray-600 text-2xl mb-4">“</div>
+                    <p class="text-gray-600">
+                        Aliquam erat volutpat. Vivamus luctus purus id mauris pharetra, id
+                        luctus velit iaculis.
+                    </p>
+                </div>
                 <div class="flex items-center justify-between">
                     <span class="font-semibold">Alya</span>
                     <div class="text-yellow-400 flex">
@@ -489,23 +496,29 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
-                <div class="text-gray-600 text-2xl mb-4">“</div>
-                <p class="text-gray-600 mb-[50px]">
-                    Jangan mati sebelum ke banda neira.
-                </p>
-                <div class="flex items-center justify-between">
+            <div
+                class="w-full flex flex-col justify-between sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
+                <div>
+                    <div class="text-gray-600 text-2xl mb-4">“</div>
+                    <p class="text-gray-600">
+                        Jangan mati sebelum ke banda neira.
+                    </p>
+                </div>
+                <div class="flex items-center mt-auto justify-between">
                     <span class="font-semibold">Nadia</span>
                     <div class="text-yellow-400 flex">
                         <span>★★★★★</span>
                     </div>
                 </div>
             </div>
-            <div class="w-full sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
-                <div class="text-gray-600 text-2xl mb-4">“</div>
-                <p class="text-gray-600 mb-[50px]">
-                    Aenean efficitur imperdiet arcu, sed bibendum libero tincidunt eu.
-                </p>
+            <div
+                class="w-full flex flex-col justify-between sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
+                <div>
+                    <div class="text-gray-600 text-2xl mb-4">“</div>
+                    <p class="text-gray-600">
+                        Aenean efficitur imperdiet arcu, sed bibendum libero tincidunt eu.
+                    </p>
+                </div>
                 <div class="flex items-center justify-between">
                     <span class="font-semibold">Siti</span>
                     <div class="text-yellow-400 flex">
@@ -513,11 +526,14 @@
                     </div>
                 </div>
             </div>
-            <div class="w-full sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
-                <div class="text-gray-600 text-2xl mb-4">“</div>
-                <p class="text-gray-600 mb-[50px]">
-                    Sed lacinia urna sed magna volutpat, in volutpat metus mollis.
-                </p>
+            <div
+                class="w-full flex flex-col justify-between sm:w-[476px] h-[210px] min-w-[80%] sm:min-w-[40%] p-4 bg-white rounded-lg shadow">
+                <div>
+                    <div class="text-gray-600 text-2xl mb-4">“</div>
+                    <p class="text-gray-600 mb-[50px]">
+                        Sed lacinia urna sed magna volutpat, in volutpat metus mollis.
+                    </p>
+                </div>
                 <div class="flex items-center justify-between">
                     <span class="font-semibold">Lia</span>
                     <div class="text-yellow-400 flex">
@@ -532,7 +548,7 @@
     </section>
 
     <!-- Footer -->
-    <section id="footer" class="px-[30px] md:px-[50px] xl:px-[80px] pt-[50px] md:py-[50px]">
+    <section id="footer" class="px-[30px] md:px-[50px] xl:px-[40px] pt-[50px] md:py-[50px]">
         <footer class="bg-black text-white py-12 mx-auto rounded-xl">
             <div class="max-w-screen-xl mx-auto px-8">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
@@ -552,25 +568,30 @@
 
                     <!-- Footer Column 2 - Navlink -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">Navlink</h3>
+                        <h3 class="text-lg font-semibold mb-4">Navigasi</h3>
                         <ul>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Beranda</a></li>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Tentang</a></li>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Galeri</a></li>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Visual</a></li>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Testimoni</a></li>
+                            <li class="mb-2"><a href="#home" class="text-gray-400 hover:text-white">Beranda</a></li>
+                            <li class="mb-2"><a href="#about" class="text-gray-400 hover:text-white">Tentang</a></li>
+                            <li class="mb-2"><a href="#service" class="text-gray-400 hover:text-white">Galeri</a></li>
+                            <li class="mb-2"><a href="#visual" class="text-gray-400 hover:text-white">Visual</a></li>
+                            <li class="mb-2"><a href="#testimoni" class="text-gray-400 hover:text-white">Testimoni</a>
+                            </li>
                         </ul>
                     </div>
 
                     <!-- Footer Column 3 - General -->
                     <div>
-                        <h3 class="text-lg font-semibold mb-4">General</h3>
+                        <h3 class="text-lg font-semibold mb-4">Social</h3>
                         <ul>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Beranda</a></li>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Tentang</a></li>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Galeri</a></li>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Visual</a></li>
-                            <li class="mb-2"><a href="#" class="text-gray-400 hover:text-white">Testimoni</a></li>
+                            <li class="mb-2"><a href="www.instagram.com"
+                                    class="text-gray-400 hover:text-white">Instagram</a></li>
+                            <li class="mb-2"><a href="www.instagram.com"
+                                    class="text-gray-400 hover:text-white">Tiktok</a></li>
+                            <li class="mb-2"><a href="www.x.com" class="text-gray-400 hover:text-white">Twitter</a></li>
+                            <li class="mb-2"><a href="www.youtube.com"
+                                    class="text-gray-400 hover:text-white">Youtube</a></li>
+                            <li class="mb-2"><a href="www.threads.com"
+                                    class="text-gray-400 hover:text-white">Threads</a></li>
                         </ul>
                     </div>
 
