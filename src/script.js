@@ -135,108 +135,59 @@ function closeModal(modalId) {
 const carousel = document.getElementById("carousel");
 const dotsContainer = document.getElementById("dots");
 const cardCount = carousel.children.length;
-const cardWidth = carousel.children[0].offsetWidth; // Lebar card didasarkan pada offset lebar card pertama
-let isDragging = false; // Menambahkan flag untuk mendeteksi jika pengguna sedang menggulir
+const cardWidth = carousel.scrollWidth / cardCount;
+let currentIndex = 0;
 
 // Create and append the correct number of dots based on card count
 for (let i = 0; i < cardCount; i++) {
-    const dot = document.createElement("span");
-    dot.classList.add(
-        "dot",
-        "block",
-        "w-2",
-        "h-2",
-        "rounded-full",
-        "cursor-pointer",
-        "transition-all",
-        "duration-300"
-    );
-    dot.setAttribute("data-index", i);
-    dot.classList.add(i === 0 ? "bg-gray-800" : "bg-gray-300");
-    dotsContainer.appendChild(dot);
+  const dot = document.createElement("span");
+  dot.classList.add(
+    "dot",
+    "block",
+    "w-2",
+    "h-2",
+    "rounded-full",
+    "cursor-pointer",
+    "transition-all",
+    "duration-300"
+  );
+  dot.setAttribute("data-index", i);
+  dot.classList.add(i === 0 ? "bg-gray-800" : "bg-gray-300");
+  dotsContainer.appendChild(dot);
 }
 
 const dots = document.querySelectorAll(".dot");
 
 function updateDots(activeIndex) {
-    dots.forEach((dot, index) => {
-        dot.classList.remove("bg-gray-800", "w-8");
-        dot.classList.add("bg-gray-300", "w-2");
-        if (index === activeIndex) {
-            dot.classList.add("bg-gray-800", "w-8");
-            dot.classList.remove("bg-gray-300");
-        }
-    });
+  dots.forEach((dot, index) => {
+    dot.classList.remove("bg-gray-800", "w-8");
+    dot.classList.add("bg-gray-300", "w-2");
+    if (index === activeIndex) {
+      dot.classList.add("bg-gray-800", "w-8");
+      dot.classList.remove("bg-gray-300");
+    }
+  });
 }
 
 function scrollToCard(index) {
-    carousel.scrollTo({
-        left: index * cardWidth,
-        behavior: "smooth",
-    });
-    updateDots(index);
-}
-
-// Fungsi untuk menghitung card yang paling dekat dengan tengah layar
-function snapToNearestCard() {
-    const carouselRect = carousel.getBoundingClientRect();
-    const carouselCenter = carouselRect.left + carouselRect.width / 2;
-
-    let closestIndex = 0;
-    let closestDistance = Infinity;
-
-    // Loop untuk mencari card yang paling dekat dengan pusat layar
-    Array.from(carousel.children).forEach((card, index) => {
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const distance = Math.abs(carouselCenter - cardCenter);
-
-        if (distance < closestDistance) {
-            closestDistance = distance;
-            closestIndex = index;
-        }
-    });
-
-    scrollToCard(closestIndex); // Snap ke card terdekat
+  carousel.scrollTo({
+    left: index * cardWidth,
+    behavior: "smooth",
+  });
+  currentIndex = index;
+  updateDots(index);
 }
 
 dots.forEach((dot) => {
-    dot.addEventListener("click", (e) => {
-        const index = Number(e.target.getAttribute("data-index"));
-        scrollToCard(index);
-    });
+  dot.addEventListener("click", (e) => {
+    const index = Number(e.target.getAttribute("data-index"));
+    scrollToCard(index);
+  });
 });
 
-// Deteksi jika pengguna sedang menggulir
 carousel.addEventListener("scroll", () => {
-    if (!isDragging) {
-        const index = Math.round(carousel.scrollLeft / cardWidth);
-        updateDots(index);
-    }
-});
-
-// Menambah event untuk deteksi "dragging"
-carousel.addEventListener("mousedown", () => {
-    isDragging = true;
-});
-
-carousel.addEventListener("mouseup", () => {
-    isDragging = false;
-    snapToNearestCard(); // Snap ke card terdekat saat drag selesai
-});
-
-carousel.addEventListener("mouseleave", () => {
-    isDragging = false;
-    snapToNearestCard(); // Snap ke card terdekat saat mouse keluar dari carousel
-});
-
-carousel.addEventListener("touchstart", () => {
-    isDragging = true;
-});
-
-carousel.addEventListener("touchend", () => {
-    isDragging = false;
-    snapToNearestCard(); // Snap ke card terdekat saat sentuhan selesai
+  const index = Math.round(carousel.scrollLeft / cardWidth);
+  updateDots(index);
 });
 
 updateDots(0);
